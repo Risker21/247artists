@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join the Waitlist - tape.pink</title>
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <title>加入候补名单 - tape.pink</title>
     <style>
       * {
         margin: 0;
@@ -161,56 +162,54 @@
   <body>
     <div class="container">
       <div class="logo">
-        <h1>tape.pink</h1>
-        <div class="tagline">Tokenize Your Sound. Own the Moment.</div>
+        <h1>Mo小窝</h1>
+        <div class="tagline">将自己无限放大</div>
       </div>
 
       <div class="description">
         <p>
-          Be among the first to know when we launch. Join our exclusive waitlist
-          for early access to music tokenization.
+          成为第一批获知上线消息的人，加入候补名单即可优先体验。
         </p>
       </div>
 
       <div class="form-container">
         <form id="waitlistForm">
           <div class="form-group">
-            <label for="name">Full Name</label>
+            <label for="name">姓名</label>
             <input
               type="text"
               id="name"
               name="name"
               required
-              placeholder="Enter your full name"
+              placeholder="请输入您的姓名"
             />
           </div>
 
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">电子邮箱</label>
             <input
               type="email"
               id="email"
               name="email"
               required
-              placeholder="Enter your email address"
+              placeholder="请输入常用邮箱"
             />
           </div>
 
-          <button type="submit" class="submit-btn">Join the Waitlist</button>
+          <button type="submit" class="submit-btn">加入候补名单</button>
         </form>
 
         <div id="successMessage" class="success-message">
-          <strong>Thank you!</strong> You've been added to our waitlist. We'll
-          notify you as soon as we launch.
+          <strong>谢谢！</strong> 您已成功加入候补名单，上线即刻通知您。
         </div>
 
         <div id="errorMessage" class="error-message">
-          <strong>Oops!</strong> Something went wrong. Please try again.
+          <strong>提示：</strong> 出现问题，请稍后再试。
         </div>
       </div>
 
       <div class="back-link">
-        <a href="index.htm">← Back to Home</a>
+        <a href="index.htm">← 返回首页</a>
       </div>
     </div>
 
@@ -223,22 +222,19 @@
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
 
-          // Hide any existing messages
           document.getElementById("successMessage").style.display = "none";
           document.getElementById("errorMessage").style.display = "none";
 
-          // Simple validation
           if (!name || !email) {
-            showError("Please fill in all fields.");
+            showError("请填写所有字段。");
             return;
           }
 
           if (!isValidEmail(email)) {
-            showError("Please enter a valid email address.");
+            showError("请输入有效的电子邮箱。");
             return;
           }
 
-          // Simulate form submission (replace with actual backend integration)
           submitForm(name, email);
         });
 
@@ -248,15 +244,12 @@
       }
 
       function submitForm(name, email) {
-        // Show loading state
         const submitBtn = document.querySelector(".submit-btn");
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = "Joining...";
+        submitBtn.textContent = "加入中...";
         submitBtn.disabled = true;
 
-        // Simulate API call (replace with actual backend call)
         setTimeout(() => {
-          // Store in localStorage for demo purposes
           const waitlist = JSON.parse(
             localStorage.getItem("tapePinkWaitlist") || "[]"
           );
@@ -270,15 +263,12 @@
           // Show success message
           showSuccess();
 
-          // Reset form
           document.getElementById("waitlistForm").reset();
 
-          // Reset button
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
 
-          // Optional: Send to analytics or backend
-          console.log("New waitlist signup:", { name, email });
+          console.log("新候补名单提交：", { name, email });
         }, 1500);
       }
 
@@ -289,7 +279,7 @@
 
       function showError(message) {
         const errorDiv = document.getElementById("errorMessage");
-        errorDiv.innerHTML = `<strong>Error:</strong> ${message}`;
+        errorDiv.innerHTML = `<strong>错误：</strong> ${message}`;
         errorDiv.style.display = "block";
         document.getElementById("successMessage").style.display = "none";
       }
