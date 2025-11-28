@@ -1,288 +1,285 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
-    <title>加入候补名单 - tape.pink</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #cfcfcf 0%, #d92fce 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-      }
+<head>
 
+  <link rel="icon" type="image/png" href="wp-content/themes/creatorspc/static/favicon/tapedotpink_logo_96x96.jpg"
+    sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="wp-content/themes/creatorspc/static/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="wp-content/themes/creatorspc/static/favicon/tapedotpink_logo_16x16.jpg" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Language" content="zh-CN" />
+  <title>加入候补名单 - Mo小窝</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #cfcfcf 0%, #d92fce 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      color: #333;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .logo .tagline {
+      color: #666;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .form-container {
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #e7197c 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .success-message {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 1px solid #c3e6cb;
+    }
+
+    .error-message {
+      display: none;
+      background: #f8d7da;
+      color: #721c24;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 1px solid #f5c6cb;
+    }
+
+    .back-link {
+      margin-top: 30px;
+    }
+
+    .back-link a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #764ba2;
+    }
+
+    .description {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
       .container {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 500px;
-        width: 100%;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      .logo {
-        margin-bottom: 30px;
+        padding: 30px 20px;
       }
 
       .logo h1 {
-        color: #333;
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
+        font-size: 2rem;
       }
+    }
+  </style>
+</head>
 
-      .logo .tagline {
-        color: #666;
-        font-size: 1.1rem;
-        font-weight: 400;
-      }
+<body>
+  <div class="container">
+    <div class="logo">
+      <h1>Mo小窝</h1>
+      <div class="tagline">将自己无限放大</div>
+    </div>
 
-      .form-container {
-        margin-bottom: 30px;
-      }
+    <div class="description">
+      <p>
+        成为第一批获知上线消息的人，加入候补名单即可优先体验。
+      </p>
+    </div>
 
-      .form-group {
-        margin-bottom: 20px;
-        text-align: left;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 8px;
-        color: #333;
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-
-      input {
-        width: 100%;
-        padding: 15px;
-        border: 2px solid #e1e5e9;
-        border-radius: 10px;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: white;
-      }
-
-      input:focus {
-        outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-      }
-
-      .submit-btn {
-        width: 100%;
-        padding: 15px;
-        background: linear-gradient(135deg, #e7197c 0%, #764ba2 100%);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 10px;
-      }
-
-      .submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-      }
-
-      .submit-btn:active {
-        transform: translateY(0);
-      }
-
-      .success-message {
-        display: none;
-        background: #d4edda;
-        color: #155724;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-        border: 1px solid #c3e6cb;
-      }
-
-      .error-message {
-        display: none;
-        background: #f8d7da;
-        color: #721c24;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-        border: 1px solid #f5c6cb;
-      }
-
-      .back-link {
-        margin-top: 30px;
-      }
-
-      .back-link a {
-        color: #667eea;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .back-link a:hover {
-        color: #764ba2;
-      }
-
-      .description {
-        color: #666;
-        margin-bottom: 30px;
-        line-height: 1.6;
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 30px 20px;
-        }
-
-        .logo h1 {
-          font-size: 2rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="logo">
-        <h1>Mo小窝</h1>
-        <div class="tagline">将自己无限放大</div>
-      </div>
-
-      <div class="description">
-        <p>
-          成为第一批获知上线消息的人，加入候补名单即可优先体验。
-        </p>
-      </div>
-
-      <div class="form-container">
-        <form id="waitlistForm">
-          <div class="form-group">
-            <label for="name">姓名</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="请输入您的姓名"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="email">电子邮箱</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="请输入常用邮箱"
-            />
-          </div>
-
-          <button type="submit" class="submit-btn">加入候补名单</button>
-        </form>
-
-        <div id="successMessage" class="success-message">
-          <strong>谢谢！</strong> 您已成功加入候补名单，上线即刻通知您。
+    <div class="form-container">
+      <form id="waitlistForm">
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name" required placeholder="请输入您的姓名" />
         </div>
 
-        <div id="errorMessage" class="error-message">
-          <strong>提示：</strong> 出现问题，请稍后再试。
+        <div class="form-group">
+          <label for="email">电子邮箱</label>
+          <input type="email" id="email" name="email" required placeholder="请输入常用邮箱" />
         </div>
+
+        <button type="submit" class="submit-btn">加入候补名单</button>
+      </form>
+
+      <div id="successMessage" class="success-message">
+        <strong>谢谢！</strong> 您已成功加入候补名单，上线即刻通知您。
       </div>
 
-      <div class="back-link">
-        <a href="index.htm">← 返回首页</a>
+      <div id="errorMessage" class="error-message">
+        <strong>提示：</strong> 出现问题，请稍后再试。
       </div>
     </div>
 
-    <script>
-      document
-        .getElementById("waitlistForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+    <div class="back-link">
+      <a href="index.htm">← 返回首页</a>
+    </div>
+  </div>
 
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
+  <script>
+    document
+      .getElementById("waitlistForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
 
-          document.getElementById("successMessage").style.display = "none";
-          document.getElementById("errorMessage").style.display = "none";
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
 
-          if (!name || !email) {
-            showError("请填写所有字段。");
-            return;
-          }
-
-          if (!isValidEmail(email)) {
-            showError("请输入有效的电子邮箱。");
-            return;
-          }
-
-          submitForm(name, email);
-        });
-
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
-
-      function submitForm(name, email) {
-        const submitBtn = document.querySelector(".submit-btn");
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = "加入中...";
-        submitBtn.disabled = true;
-
-        setTimeout(() => {
-          const waitlist = JSON.parse(
-            localStorage.getItem("tapePinkWaitlist") || "[]"
-          );
-          waitlist.push({
-            name: name,
-            email: email,
-            timestamp: new Date().toISOString(),
-          });
-          localStorage.setItem("tapePinkWaitlist", JSON.stringify(waitlist));
-
-          // Show success message
-          showSuccess();
-
-          document.getElementById("waitlistForm").reset();
-
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-
-          console.log("新候补名单提交：", { name, email });
-        }, 1500);
-      }
-
-      function showSuccess() {
-        document.getElementById("successMessage").style.display = "block";
-        document.getElementById("errorMessage").style.display = "none";
-      }
-
-      function showError(message) {
-        const errorDiv = document.getElementById("errorMessage");
-        errorDiv.innerHTML = `<strong>错误：</strong> ${message}`;
-        errorDiv.style.display = "block";
         document.getElementById("successMessage").style.display = "none";
-      }
-    </script>
-  </body>
+        document.getElementById("errorMessage").style.display = "none";
+
+        if (!name || !email) {
+          showError("请填写所有字段。");
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          showError("请输入有效的电子邮箱。");
+          return;
+        }
+
+        submitForm(name, email);
+      });
+
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function submitForm(name, email) {
+      const submitBtn = document.querySelector(".submit-btn");
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "加入中...";
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        const waitlist = JSON.parse(
+          localStorage.getItem("tapePinkWaitlist") || "[]"
+        );
+        waitlist.push({
+          name: name,
+          email: email,
+          timestamp: new Date().toISOString(),
+        });
+        localStorage.setItem("tapePinkWaitlist", JSON.stringify(waitlist));
+
+        // Show success message
+        showSuccess();
+
+        document.getElementById("waitlistForm").reset();
+
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+
+        console.log("新候补名单提交：", { name, email });
+      }, 1500);
+    }
+
+    function showSuccess() {
+      document.getElementById("successMessage").style.display = "block";
+      document.getElementById("errorMessage").style.display = "none";
+    }
+
+    function showError(message) {
+      const errorDiv = document.getElementById("errorMessage");
+      errorDiv.innerHTML = `<strong>错误：</strong> ${message}`;
+      errorDiv.style.display = "block";
+      document.getElementById("successMessage").style.display = "none";
+    }
+  </script>
+</body>
+
 </html>
